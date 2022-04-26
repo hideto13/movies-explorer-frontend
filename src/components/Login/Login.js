@@ -1,7 +1,12 @@
+import Form from "../Form/Form";
 import "./Login.css";
 
 function Login() {
-  return <div>Login</div>;
+  return (
+    <Form>
+      <div>Login</div>
+    </Form>
+  );
 }
 
 export default Login;

@@ -1,7 +1,12 @@
+import Form from "../Form/Form";
 import "./Register.css";
 
 function Register() {
-  return <div>Register</div>;
+  return (
+    <Form>
+      <div>Register</div>
+    </Form>
+  );
 }
 
 export default Register;
