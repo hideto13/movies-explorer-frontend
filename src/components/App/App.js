@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -11,29 +11,15 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route path="/movies">
-          <Movies />
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies />
-        </Route>
-        <Route path="/profile">
-          <Profile />
-        </Route>
-        <Route path="/signup">
-          <Register />
-        </Route>
-        <Route path="/signin">
-          <Login />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<Main />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/saved-movies" element={<SavedMovies />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/signin" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
