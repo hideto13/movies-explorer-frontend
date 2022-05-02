@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo.svg";
+import "./Header.css";
 
-function Header({ loggedIn }) {
+function Header() {
+  const location = useLocation();
   return (
     <header className="header">
       <img
@@ -12,25 +14,18 @@ function Header({ loggedIn }) {
         height="38"
         alt="Логотип"
       />
-      <div className="header__container">
-        {loggedIn ? (
-          <>
-            <Navigation />
-            <Link className="header__link" to="/profile">
-              Аккаунт
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link className="header__link" to="/signup">
-              Регистрация
-            </Link>
-            <Link className="header__link" to="/signin">
-              Войти
-            </Link>
-          </>
-        )}
-      </div>
+      {location.pathname === "/" ? (
+        <div className="header__links">
+          <Link className="header__link" to="/signup">
+            Регистрация
+          </Link>
+          <Link className="header__link header__link_active" to="/signin">
+            Войти
+          </Link>
+        </div>
+      ) : (
+        <Navigation />
+      )}
     </header>
   );
 }

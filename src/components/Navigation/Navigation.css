@@ -1,0 +1,132 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.navigation__list {
+  display: flex;
+  gap: 16px;
+
+  align-items: center;
+}
+
+.navigation__item {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  color: white;
+  text-decoration: none;
+}
+
+.navigation__account {
+  border: 2px solid rgba(170, 170, 170, 0.2);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px 8px 31px;
+  position: relative;
+}
+
+.navigation__account::after {
+  width: 12px;
+  height: 14px;
+  content: url("../../images/account.svg");
+  position: absolute;
+  top: 9px;
+  left: 12px;
+}
+
+.navigation__item_main {
+  display: none;
+}
+.navigation__menu {
+  border: none;
+  display: none;
+  width: 44px;
+  height: 44px;
+  background: transparent center url("../../images/menu.svg");
+  background-size: auto;
+  cursor: pointer;
+}
+
+.navigation__close {
+  width: 22px;
+  height: 22px;
+  background: transparent center url("../../images/close.svg");
+  background-size: auto;
+  border: none;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  padding: 0;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 1023px) {
+  .navigation {
+    position: fixed;
+    background-color: #202020;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    max-width: 520px;
+    padding: 159px 90px 90px;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: none;
+  }
+  .navigation_visible {
+    display: flex;
+  }
+  .navigation__list {
+    flex-direction: column;
+    gap: 22px;
+  }
+  .navigation__item {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding-bottom: 6px;
+  }
+
+  .navigation__item_active {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding-bottom: 4px;
+    border-bottom: 2px solid white;
+  }
+
+  .navigation__item_main {
+    display: block;
+  }
+  .navigation__menu {
+    display: block;
+  }
+  .navigation__close {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .navigation {
+    width: 100%;
+    padding: 144px 10px 46px 10px;
+  }
+  .navigation__close {
+    top: 13px;
+    right: 13px;
+  }
+}
