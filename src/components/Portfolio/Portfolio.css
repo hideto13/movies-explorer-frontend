@@ -28,10 +28,15 @@
   padding: 20px 0 19px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .portfolio__link_last {
   border: none;
+}
+.link__img {
+  width: 18px;
+  height: 28px;
 }
 
 @media (max-width: 1023px) {
@@ -42,5 +47,27 @@
   .portfolio__link {
     padding: 20px 0 19px;
     font-size: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .portfolio {
+    padding-top: 69px;
+  }
+
+  .portfolio__title {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .portfolio__link {
+    padding: 20px 0 19px;
+    font-size: 18px;
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 28px;
+  }
+  .link__img {
+    width: 12px;
+    height: 18px;
   }
 }
