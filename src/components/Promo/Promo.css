@@ -3,13 +3,14 @@
   background: #272727;
   margin: 0 auto;
   margin-top: 20px;
-  padding: 25px;
+  padding: 30px;
   border-radius: 10px;
+  box-sizing: border-box;
 }
 
 .promo__title {
   max-width: 730px;
-  margin: 135px auto 151px;
+  margin: 130px auto 151px;
   font-size: 50px;
   font-weight: 400;
   line-height: 58px;

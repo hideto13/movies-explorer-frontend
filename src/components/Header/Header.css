@@ -1,9 +1,11 @@
 .header {
   display: flex;
-  padding: 21px 70px;
+  padding: 18px 30px;
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .header__links {
