@@ -17,3 +17,32 @@
   letter-spacing: -0.04em;
   text-align: center;
 }
+
+@media (max-width: 1023px) {
+  .promo {
+    max-width: 728px;
+    padding: 30px 24px;
+  }
+  .promo__title {
+    margin: 320px auto 314px;
+    font-size: 40px;
+    line-height: 52px;
+  }
+}
+
+@media (max-width: 767px) {
+  .promo {
+    margin-top: 14px;
+    max-width: 292px;
+    padding: 17px 0;
+  }
+  .promo__title {
+    margin: 203px auto 212px;
+    font-size: 40px;
+    line-height: 52px;
+    font-family: Inter;
+    font-size: 29px;
+
+    line-height: 37px;
+  }
+}
