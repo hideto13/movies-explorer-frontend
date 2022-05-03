@@ -71,3 +71,31 @@
   object-fit: cover;
   border-radius: 10px;
 }
+
+@media (max-width: 1023px) {
+  .about-me {
+    max-width: 728px;
+    padding: 90px 30px 71px;
+  }
+  .about-me__photo {
+    width: 255px;
+    height: 307px;
+  }
+  .about-me__name {
+    margin-bottom: 16px;
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .about-me__description {
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .about-me__about {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .about-me__info {
+    max-width: 364px;
+  }
+}

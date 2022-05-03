@@ -46,3 +46,10 @@
   letter-spacing: 0px;
   text-align: right;
 }
+
+@media (max-width: 1023px) {
+  .footer {
+    max-width: 708px;
+    padding: 79px 0 0;
+  }
+}
