@@ -1,7 +1,7 @@
 .not-found {
   padding: 60px;
   box-sizing: border-box;
-  /* height: 100vh; */
+  min-height: 100vh;
 }
 
 .not-found__title {
@@ -39,7 +39,7 @@
     padding: 222px 60px;
   }
   .not-found__text {
-    margin-bottom: 284px;
+    margin-bottom: 184px;
   }
   .not-found__title {
     margin-top: 184px;
