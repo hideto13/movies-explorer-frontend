@@ -6,13 +6,15 @@
   gap: 10px;
   width: max-content;
 }
-.navtab__item {
-  margin: 10px 0;
-}
+
 .navtab__link {
   color: white;
   text-decoration: none;
-  padding: 10px 17px;
+  padding: 10px 13.5px;
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  min-width: 96px;
   background: #303030;
   border-radius: 10px;
 
