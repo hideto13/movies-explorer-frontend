@@ -22,7 +22,7 @@ function Footer() {
           <li className="footer__social">
             <a
               className="footer__link"
-              href="https://github.com/hideto13"
+              href="https://github.com/"
               target="_blank"
               rel="noreferrer"
             >
