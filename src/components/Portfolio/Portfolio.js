@@ -7,19 +7,31 @@ function Portfolio() {
       <h3 className="portfolio__title">Портфолио</h3>
       <ul className="portfolio__list">
         <li className="portfolio__item">
-          <a href="#" className="portfolio__link">
+          <a
+            href="https://hideto13.github.io/how-to-learn/"
+            className="portfolio__link"
+            target="_blank"
+          >
             <span className="link__text">Статичный сайт</span>
             <img className="link__img" src={arrow} alt="arrow"></img>
           </a>
         </li>
         <li className="portfolio__item">
-          <a href="#" className="portfolio__link">
+          <a
+            href="https://hideto13.github.io/russian-travel/"
+            className="portfolio__link"
+            target="_blank"
+          >
             <span className="link__text">Адаптивный сайт</span>
             <img className="link__img" src={arrow} alt="arrow"></img>
           </a>
         </li>
         <li className="portfolio__item">
-          <a href="#" className="portfolio__link portfolio__link_last">
+          <a
+            href="https://tkozlova.nomoredomains.xyz/"
+            className="portfolio__link portfolio__link_last"
+            target="_blank"
+          >
             <span className="link__text">Одностраничное приложение</span>
             <img className="link__img" src={arrow} alt="arrow"></img>
           </a>

@@ -4,7 +4,7 @@ import "./AboutMe.css";
 
 function AboutMe() {
   return (
-    <section className="about-me">
+    <section className="about-me" id="about-me">
       <h2 className="about-me__title">Студент</h2>
       <div className="about-me__container">
         <div className="about-me__info">
@@ -21,12 +21,20 @@ function AboutMe() {
           </p>
           <ul className="about-me__socials">
             <li className="socials__item">
-              <a className="socials__link" href="#">
+              <a
+                className="socials__link"
+                href="https://www.facebook.com/"
+                target="_blank"
+              >
                 Facebook
               </a>
             </li>
             <li className="socials__item">
-              <a className="socials__link" href="#">
+              <a
+                className="socials__link"
+                href="https://github.com/hideto13"
+                target="_blank"
+              >
                 Github
               </a>
             </li>
