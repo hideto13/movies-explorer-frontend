@@ -25,6 +25,7 @@ function AboutMe() {
                 className="socials__link"
                 href="https://www.facebook.com/"
                 target="_blank"
+                rel="noreferrer"
               >
                 Facebook
               </a>
@@ -34,13 +35,14 @@ function AboutMe() {
                 className="socials__link"
                 href="https://github.com/hideto13"
                 target="_blank"
+                rel="noreferrer"
               >
                 Github
               </a>
             </li>
           </ul>
         </div>
-        <img className="about-me__photo" src={photo} alt="photo"></img>
+        <img className="about-me__photo" src={photo} alt="my-photography"></img>
       </div>
       <Portfolio />
     </section>
