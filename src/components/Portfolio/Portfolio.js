@@ -11,6 +11,7 @@ function Portfolio() {
             href="https://hideto13.github.io/how-to-learn/"
             className="portfolio__link"
             target="_blank"
+            rel="noreferrer"
           >
             <span className="link__text">Статичный сайт</span>
             <img className="link__img" src={arrow} alt="arrow"></img>
@@ -21,6 +22,7 @@ function Portfolio() {
             href="https://hideto13.github.io/russian-travel/"
             className="portfolio__link"
             target="_blank"
+            rel="noreferrer"
           >
             <span className="link__text">Адаптивный сайт</span>
             <img className="link__img" src={arrow} alt="arrow"></img>
@@ -31,6 +33,7 @@ function Portfolio() {
             href="https://tkozlova.nomoredomains.xyz/"
             className="portfolio__link portfolio__link_last"
             target="_blank"
+            rel="noreferrer"
           >
             <span className="link__text">Одностраничное приложение</span>
             <img className="link__img" src={arrow} alt="arrow"></img>
