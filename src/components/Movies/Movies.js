@@ -13,6 +13,12 @@ function Movies() {
       <SearchForm />
       <MoviesCardList>
         <MoviesCard />
+        <MoviesCard />
+        <MoviesCard />
+        <MoviesCard />
+        <MoviesCard />
+        <MoviesCard />
+        <MoviesCard />
       </MoviesCardList>
       <Footer />
     </>
