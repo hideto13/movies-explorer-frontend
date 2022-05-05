@@ -3,6 +3,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import SearchForm from "../SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
+import movieImg from "../../images/movie.jpg";
 import "./SavedMovies.css";
 
 function SavedMovies() {
@@ -11,7 +12,24 @@ function SavedMovies() {
       <Header />
       <SearchForm />
       <MoviesCardList>
-        <MoviesCard />
+        <MoviesCard
+          variant="delete"
+          img={movieImg}
+          duration="27"
+          name="В погоне за Бенкси"
+        />
+        <MoviesCard
+          variant="delete"
+          img={movieImg}
+          duration="27"
+          name="В погоне за Бенкси"
+        />
+        <MoviesCard
+          variant="delete"
+          img={movieImg}
+          duration="27"
+          name="В погоне за Бенкси"
+        />
       </MoviesCardList>
       <Footer />
     </>

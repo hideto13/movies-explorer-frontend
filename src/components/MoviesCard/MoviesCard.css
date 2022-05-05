@@ -1,24 +1,74 @@
 .card {
   max-width: 360px;
+  background: #222222;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  line-height: 0;
 }
 .card__header {
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
 }
 .card__name {
   margin: 0;
+
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;
 }
 .card__time {
   margin: 0;
+  color: #8b8b8b;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: right;
 }
 .card__img {
   width: 100%;
   min-height: 200px;
   object-fit: cover;
 }
+
+.card__footer {
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+}
 .card__button {
+  min-width: 100px;
+  border-radius: 30px;
+  padding: 9px 15px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 11px;
+  letter-spacing: 0px;
+  text-align: center;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 .card__button_save {
+  background: #313131;
 }
 .card__button_delete {
+  background: #313131;
 }
 .card__button_success {
+  background-color: #ee3465;
+}
+
+.button__img_success {
+  width: 11px;
+  height: 7px;
+}
+
+.button__img_delete {
+  width: 8px;
+  height: 8px;
 }
