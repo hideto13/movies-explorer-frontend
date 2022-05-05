@@ -1,7 +1,7 @@
 import "./MoviesCardList.css";
 
 function MoviesCardList({ children }) {
-  return <div className="movies__list">{children}</div>;
+  return <ul className="movies__list">{children}</ul>;
 }
 
 export default MoviesCardList;
