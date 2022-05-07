@@ -7,7 +7,7 @@
 }
 .search__form {
   padding: 80px 0 83px;
-  border-bottom: 1px solid #aaaaaa;
+  border-bottom: 1px solid rgba(170, 170, 170, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -91,4 +91,18 @@
 
 .checkbox__input:checked + .checkbox__wrapper::after {
   transform: translate(20px, 0);
+}
+
+@media (max-width: 1023px) {
+  .search__form {
+    padding: 60px 0 57px;
+    flex-direction: column;
+    gap: 38px;
+  }
+  .search__container {
+    width: 100%;
+  }
+  .search__input {
+    padding: 13.5px 18px;
+  }
 }
