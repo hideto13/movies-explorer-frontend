@@ -72,3 +72,9 @@
   width: 8px;
   height: 8px;
 }
+
+@media (max-width: 1023px) {
+  .card__img {
+    min-height: 190px;
+  }
+}

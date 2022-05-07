@@ -11,3 +11,11 @@
   box-sizing: border-box;
   padding: 70px 30px 90px;
 }
+
+@media (max-width: 1023px) {
+  .movies__list {
+    grid-template-columns: repeat(2, minmax(min-content, 360px));
+    column-gap: 24px;
+    row-gap: 35px;
+  }
+}
