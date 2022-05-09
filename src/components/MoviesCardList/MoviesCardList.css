@@ -9,7 +9,7 @@
   column-gap: 30px;
   row-gap: 32px;
   box-sizing: border-box;
-  padding: 70px 30px 90px;
+  padding: 70px 30px 10px;
 }
 
 @media (max-width: 1023px) {
