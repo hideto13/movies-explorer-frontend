@@ -92,4 +92,8 @@
   .profile__list {
     margin-bottom: 379px;
   }
+  .profile__button {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
