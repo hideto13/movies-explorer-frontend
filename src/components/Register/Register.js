@@ -7,7 +7,7 @@ function Register() {
     <section className="register">
       <img className="register__logo" src={logo} alt="Логотип"></img>
       <h1 className="register__title">Добро пожаловать!</h1>
-      <form className="registter__form">
+      <form className="register__form">
         <label className="register__label">Имя</label>
         <input
           className="register__input"
