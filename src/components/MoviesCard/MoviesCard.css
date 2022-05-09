@@ -78,3 +78,25 @@
     min-height: 190px;
   }
 }
+
+@media (max-width: 767px) {
+  .card__img {
+    min-height: 168px;
+  }
+  .card__header {
+    padding: 14px;
+  }
+  .card__name {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+  }
+  .card__time {
+    font-size: 10px;
+    line-height: 18px;
+    font-weight: 700;
+  }
+  .card__footer {
+    padding: 14px;
+  }
+}

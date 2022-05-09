@@ -106,3 +106,22 @@
     padding: 13.5px 18px;
   }
 }
+
+@media (max-width: 767px) {
+  .search {
+    padding: 0 10px;
+  }
+  .search__form {
+    gap: 45px;
+    padding-bottom: 44px;
+  }
+  .search__input {
+    padding: 13.5px 16px;
+    font-size: 11px;
+    line-height: 18px;
+  }
+  .search__checkbox {
+    font-size: 11px;
+    line-height: 18px;
+  }
+}
