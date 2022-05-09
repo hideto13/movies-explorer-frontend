@@ -60,6 +60,7 @@
   text-align: center;
   background: inherit;
   border: none;
+  cursor: pointer;
 }
 .profile__button_edit {
   color: white;
