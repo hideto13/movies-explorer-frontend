@@ -1,11 +1,10 @@
-import Form from "../Form/Form";
 import "./Login.css";
 
 function Login() {
   return (
-    <Form>
+    <section>
       <div>Login</div>
-    </Form>
+    </section>
   );
 }
 
