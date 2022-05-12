@@ -26,7 +26,7 @@ function Login() {
           name="password"
           type="password"
           id="password"
-          placeholder="Password"
+          placeholder="Пароль"
           required
           autoComplete="off"
         ></input>

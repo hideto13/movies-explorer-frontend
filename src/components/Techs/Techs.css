@@ -90,6 +90,10 @@
 }
 
 @media (max-width: 767px) {
+  .techs {
+    background: inherit;
+  }
+
   .techs__container {
     max-width: 292px;
     padding: 70px 4px;

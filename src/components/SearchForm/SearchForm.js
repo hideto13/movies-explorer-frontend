@@ -11,6 +11,7 @@ function SearchForm() {
             type="text"
             name="movie"
             id="movie"
+            required
             placeholder="Фильм"
           ></input>
           <button type="submit" className="search__submit">
@@ -22,7 +23,6 @@ function SearchForm() {
           <input
             className="checkbox__input"
             type="checkbox"
-            р
             name="short-movie"
             id="short-movie"
           ></input>
