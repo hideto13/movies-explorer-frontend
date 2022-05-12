@@ -35,15 +35,9 @@
   height: 38px;
 }
 
-@media (max-width: 1023px) {
-  .header {
-    padding: 15px 30px;
-  }
-}
-
 @media (max-width: 767px) {
   .header {
-    padding: 15px 14px 16px;
+    padding: 18px 14px;
   }
   .header__link {
     font-size: 10px;

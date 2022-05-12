@@ -4,6 +4,7 @@
   min-height: 619px;
   align-content: start;
   display: grid;
+  justify-content: center;
   margin: 0 auto;
   grid-template-columns: repeat(3, minmax(min-content, 360px));
   column-gap: 30px;
