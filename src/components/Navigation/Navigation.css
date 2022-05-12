@@ -72,6 +72,7 @@
 }
 @media (max-width: 1023px) {
   .navigation {
+    z-index: 10;
     position: fixed;
     background-color: #202020;
     top: 0;
