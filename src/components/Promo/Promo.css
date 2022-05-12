@@ -1,13 +1,16 @@
 .promo {
-  max-width: 1200px;
-  background: #272727;
   margin: 0 auto;
-  margin-top: 20px;
+  max-width: 1280px;
+}
+
+.promo__container {
+  max-width: 1200px;
   padding: 30px;
   border-radius: 10px;
   box-sizing: border-box;
+  background: #272727;
+  margin: 20px 40px 0;
 }
-
 .promo__title {
   max-width: 730px;
   margin: 130px auto 151px;
@@ -19,9 +22,9 @@
 }
 
 @media (max-width: 1023px) {
-  .promo {
-    max-width: 728px;
+  .promo__container {
     padding: 30px 24px;
+    margin: 20px 20px 0;
   }
   .promo__title {
     margin: 320px auto 314px;
@@ -31,9 +34,8 @@
 }
 
 @media (max-width: 767px) {
-  .promo {
-    margin-top: 14px;
-    max-width: 292px;
+  .promo__container {
+    margin: 14px 14px 0;
     padding: 17px 0;
   }
   .promo__title {
