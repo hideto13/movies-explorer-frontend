@@ -4,14 +4,22 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Footer from "../Footer/Footer";
 import movieImg from "../../images/movie.jpg";
+import { getMovies } from "../../utils/api";
 
 import "./Movies.css";
 
 function Movies() {
+  function handleSearchMovie(movie) {
+    getMovies()
+      .then((movies) => {
+        console.log(movies);
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <>
       <Header />
-      <SearchForm />
+      <SearchForm onSearchMovie={handleSearchMovie} />
       <MoviesCardList>
         <MoviesCard
           variant="success"
