@@ -1,4 +1,4 @@
-import { BASE_URL, SEARCH_MOVIES_URL } from "./constants";
+import { MOVIES_URL } from "./constants";
 
 function _getResponseData(res) {
   if (!res.ok) {
@@ -8,7 +8,7 @@ function _getResponseData(res) {
 }
 
 export const getMovies = () => {
-  return fetch(`${SEARCH_MOVIES_URL}`, {
+  return fetch(`${MOVIES_URL}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
