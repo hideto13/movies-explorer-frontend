@@ -47,6 +47,8 @@
   height: 100%;
   z-index: 10;
   padding: 20px;
+  min-height: 619px;
+  box-sizing: border-box;
 }
 
 .preloader__container {
