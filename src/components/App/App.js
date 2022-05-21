@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { register, login } from "../../utils/MainApi";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -69,9 +70,30 @@ function App() {
     <div className="App">
       <Routes>
         <Route exact path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/movies"
+          element={
+            <ProtectedRoute loggedIn={loggedIn}>
+              <Movies />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/saved-movies"
+          element={
+            <ProtectedRoute loggedIn={loggedIn}>
+              <SavedMovies />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute loggedIn={loggedIn}>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/signup" element={<Register onRegister={onRegister} />} />
         <Route path="/signin" element={<Login onLogin={onLogin} />} />
         <Route path="*" element={<NotFound />} />
