@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { register, login } from "../../utils/MainApi";
+import { register, login, getUser, updateUser } from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import Main from "../Main/Main";
@@ -15,6 +15,7 @@ import "./App.css";
 function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
   const [infoPopupOpen, setInfoPopupOpen] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
 
@@ -26,6 +27,29 @@ function App() {
     setInfoPopupOpen(false);
   }
 
+  function onUpdateUser({ name, email }) {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      updateUser(jwt, email, name)
+        .then(({ name, email }) => {
+          setCurrentUser({ name, email });
+        })
+        .catch((err) => console.log(err));
+    }
+  }
+
+  function handleUserCheck() {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      getUser(jwt)
+        .then(({ name, email }) => {
+          setCurrentUser({ name, email });
+          setLoggedIn(true);
+        })
+        .catch((err) => console.log(err));
+    }
+  }
+
   function onRegister({ name, email, password }) {
     register({
       name,
@@ -33,12 +57,10 @@ function App() {
       password,
     })
       .then(() => {
-        setSuccess(true);
+        onLogin({ email, password });
       })
       .catch(() => {
         setSuccess(false);
-      })
-      .finally(() => {
         openInfoPopup();
       });
   }
@@ -51,9 +73,8 @@ function App() {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("jwt", data.token);
-          // addApi(data.token);
           setLoggedIn(true);
-          // setCurrentEmail(email);
+          handleUserCheck();
           navigate("/movies");
         } else {
           setSuccess(false);
@@ -65,6 +86,9 @@ function App() {
         openInfoPopup();
       });
   }
+  React.useEffect(() => {
+    handleUserCheck();
+  }, []);
 
   return (
     <div className="App">
@@ -90,7 +114,7 @@ function App() {
           path="/profile"
           element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Profile />
+              <Profile currentUser={currentUser} onUpdateUser={onUpdateUser} />
             </ProtectedRoute>
           }
         />
