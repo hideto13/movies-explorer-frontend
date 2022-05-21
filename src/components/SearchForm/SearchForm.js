@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import searchImg from "../../images/search.svg";
 import "./SearchForm.css";
 
@@ -9,7 +9,7 @@ function SearchForm({
   filterShort,
   setFilterShort,
 }) {
-  const [errorText, setErrorText] = React.useState("");
+  const [errorText, setErrorText] = useState("");
 
   function handleSearchValueChange(e) {
     setSearchValue(e.target.value);

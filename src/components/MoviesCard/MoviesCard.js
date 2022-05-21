@@ -9,7 +9,7 @@ function MoviesCard({ variant, img, name, duration, trailerLink }) {
         <p className="card__name">{name}</p>
         <p className="card__time">{duration} минут</p>
       </div>
-      <a href={trailerLink} target="_blank">
+      <a href={trailerLink} target="_blank" rel="noreferrer">
         <img className="card__img" src={img} alt="movie"></img>
       </a>
       <div className="card__footer">

@@ -17,3 +17,14 @@ export const register = ({ name, email, password }) => {
     body: JSON.stringify({ name, email, password }),
   }).then((res) => _getResponseData(res));
 };
+
+export const login = ({ email, password }) => {
+  return fetch(`${MAIN_URL}/signin`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  }).then((res) => _getResponseData(res));
+};
