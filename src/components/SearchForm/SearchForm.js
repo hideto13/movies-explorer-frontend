@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import searchImg from "../../images/search.svg";
 import "./SearchForm.css";
 
-function SearchForm({ onSearchMovie }) {
-  const [searchValue, setSearchValue] = React.useState("");
+function SearchForm({
+  onSearchMovie,
+  searchValue,
+  setSearchValue,
+  filterShort,
+  setFilterShort,
+}) {
   const [errorText, setErrorText] = React.useState("");
 
   function handleSearchValueChange(e) {
     setSearchValue(e.target.value);
     setErrorText("");
+  }
+
+  function handleFilterShortChange(e) {
+    setFilterShort(e.target.checked);
   }
 
   function handleSubmit(e) {
@@ -19,6 +28,7 @@ function SearchForm({ onSearchMovie }) {
     } else {
       onSearchMovie({
         searchValue,
+        filterShort,
       });
     }
   }
@@ -51,6 +61,8 @@ function SearchForm({ onSearchMovie }) {
             type="checkbox"
             name="short-movie"
             id="short-movie"
+            onChange={handleFilterShortChange}
+            checked={filterShort}
           ></input>
           <div className="checkbox__wrapper"></div>
         </label>

@@ -24,13 +24,19 @@ function Movies() {
   const [isSearching, setIsSearching] = useState(false);
   const [isSearchingFailed, setIsSearchingFailed] = useState(false);
 
-  function handleSearchMovie(movie) {
+  const [searchValue, setSearchValue] = React.useState("");
+  const [filterShort, setFilterShort] = useState(false);
+
+  function handleSearchMovie({ searchValue, filterShort }) {
     setIsLoading(true);
     getMovies()
       .then((movies) => {
         setIsSearchingFailed(false);
         setIsSearching(true);
         window.localStorage.setItem("movies", JSON.stringify(movies));
+        window.localStorage.setItem("searchValue", searchValue);
+        window.localStorage.setItem("filterShort", filterShort);
+        console.log(typeof filterShort);
         setMovies(movies);
         setIsLoading(false);
       })
@@ -64,14 +70,29 @@ function Movies() {
 
   useEffect(() => {
     handleResize();
-    const movies = JSON.parse(window.localStorage.getItem("movies"));
+    const movies = JSON.parse(window.localStorage.getItem("movies") || []);
+    setSearchValue(window.localStorage.getItem("searchValue") || "");
+    const filter = window.localStorage.getItem("filterShort");
+    if (filter === "true") {
+      setFilterShort(true);
+    } else {
+      setFilterShort(false);
+    }
+
     setMovies(movies);
   }, []);
 
+  useEffect(() => {}, []);
   return (
     <>
       <Header />
-      <SearchForm onSearchMovie={handleSearchMovie} />
+      <SearchForm
+        onSearchMovie={handleSearchMovie}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        filterShort={filterShort}
+        setFilterShort={setFilterShort}
+      />
       {isLoading ? (
         <Preloader />
       ) : isSearchingFailed ? (
@@ -79,7 +100,7 @@ function Movies() {
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз
         </div>
-      ) : isSearching && movies && movies.length === 0 ? (
+      ) : isSearching && movies.length === 0 ? (
         <div className="movies__container">Ничего не найдено</div>
       ) : (
         <MoviesCardList>
@@ -89,13 +110,14 @@ function Movies() {
             <>
               {movies
                 .slice(0, moviesCounter)
-                .map(({ id, nameRU, duration, image }) => (
+                .map(({ id, nameRU, duration, image, trailerLink }) => (
                   <MoviesCard
                     key={id}
                     variant="save"
                     img={`https://api.nomoreparties.co/${image.url}`}
                     duration={duration}
                     name={nameRU}
+                    trailerLink={trailerLink}
                   />
                 ))}
             </>
@@ -103,7 +125,7 @@ function Movies() {
         </MoviesCardList>
       )}
 
-      {movies && movies.length > 0 ? (
+      {movies.length > 0 && moviesCounter < movies.length ? (
         <section className="more">
           <button
             className="more__button"
