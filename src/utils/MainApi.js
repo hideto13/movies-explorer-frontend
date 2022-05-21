@@ -28,3 +28,26 @@ export const login = ({ email, password }) => {
     body: JSON.stringify({ email, password }),
   }).then((res) => _getResponseData(res));
 };
+
+export const getUser = (token) => {
+  return fetch(`${MAIN_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => _getResponseData(res));
+};
+
+export const updateUser = (token, email, name) => {
+  return fetch(`${MAIN_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ email, name }),
+  }).then((res) => _getResponseData(res));
+};
