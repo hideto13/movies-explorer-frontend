@@ -17,7 +17,7 @@ function Register({ onRegister }) {
   const [isPasswordValid, setIsPasswordValid] = React.useState(false);
 
   function handleNameChange(e) {
-    const pattern = /^[A-Za-zА-Яа-яЁё\-\ ]+$/;
+    const pattern = /^[A-Za-zА-Яа-яЁё\- ]+$/;
     setName(e.target.value);
     setNameError(e.target.validationMessage);
     if (e.target.validationMessage === "" && !e.target.value.match(pattern)) {

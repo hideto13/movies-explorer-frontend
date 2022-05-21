@@ -35,7 +35,7 @@
   text-align: left;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   padding: 15px;
   color: white;
   background: #2f2f2f;
@@ -74,6 +74,11 @@
   color: white;
   border-radius: 3px;
   cursor: pointer;
+}
+
+.login__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .login__text {
   margin: 0;
