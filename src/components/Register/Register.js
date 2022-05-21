@@ -1,8 +1,35 @@
+import React from "react";
 import { Link } from "react-router-dom";
+
 import logo from "../../images/logo.svg";
 import "./Register.css";
 
-function Register() {
+function Register({ onRegister }) {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    onRegister({
+      email,
+      password,
+    });
+  }
+
   return (
     <section className="register">
       <img className="register__logo" src={logo} alt="Логотип"></img>
@@ -11,7 +38,7 @@ function Register() {
         <label className="register__label">Имя</label>
         <input
           className="register__input"
-          value="Таня"
+          value={name || ""}
           name="name"
           type="text"
           id="name"
@@ -24,7 +51,7 @@ function Register() {
         <label className="register__label">E-mail</label>
         <input
           className="register__input"
-          value="pochta@yandex.ru"
+          value={email || ""}
           name="email"
           type="email"
           id="email"
@@ -35,7 +62,7 @@ function Register() {
         <label className="register__label">Пароль</label>
         <input
           className="register__input register__input_error"
-          value="12345678"
+          value={password || ""}
           name="password"
           type="password"
           id="password"

@@ -6,3 +6,14 @@ function _getResponseData(res) {
   }
   return res.json();
 }
+
+export const register = ({ email, password }) => {
+  return fetch(`${MAIN_URL}/signup`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  }).then((res) => _getResponseData(res));
+};
