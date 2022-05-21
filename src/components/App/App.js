@@ -23,8 +23,9 @@ function App() {
     setInfoPopupOpen(false);
   }
 
-  function onRegister({ email, password }) {
+  function onRegister({ name, email, password }) {
     register({
+      name,
       email,
       password,
     })
