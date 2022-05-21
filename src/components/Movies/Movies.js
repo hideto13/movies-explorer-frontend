@@ -21,16 +21,22 @@ function Movies() {
   const [moviesCounter, setMoviesCounter] = useState(0);
   const [moviesCounterStep, setMoviesCounterStep] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const [isSearchingFailed, setIsSearchingFailed] = useState(false);
 
   function handleSearchMovie(movie) {
     setIsLoading(true);
     getMovies()
       .then((movies) => {
+        setIsSearchingFailed(false);
+        setIsSearching(true);
+        window.localStorage.setItem("movies", JSON.stringify(movies));
         setMovies(movies);
         setIsLoading(false);
       })
       .catch((err) => {
         setIsLoading(false);
+        setIsSearchingFailed(true);
         console.log(err);
       });
   }
@@ -58,6 +64,8 @@ function Movies() {
 
   useEffect(() => {
     handleResize();
+    const movies = JSON.parse(window.localStorage.getItem("movies"));
+    setMovies(movies);
   }, []);
 
   return (
@@ -66,25 +74,36 @@ function Movies() {
       <SearchForm onSearchMovie={handleSearchMovie} />
       {isLoading ? (
         <Preloader />
+      ) : isSearchingFailed ? (
+        <div className="movies__container">
+          Во время запроса произошла ошибка. Возможно, проблема с соединением
+          или сервер недоступен. Подождите немного и попробуйте ещё раз
+        </div>
+      ) : isSearching && movies && movies.length === 0 ? (
+        <div className="movies__container">Ничего не найдено</div>
       ) : (
         <MoviesCardList>
-          <>
-            {movies
-              .slice(0, moviesCounter)
-              .map(({ id, nameRU, duration, image }) => (
-                <MoviesCard
-                  key={id}
-                  variant="save"
-                  img={`https://api.nomoreparties.co/${image.url}`}
-                  duration={duration}
-                  name={nameRU}
-                />
-              ))}
-          </>
+          {!movies ? (
+            ""
+          ) : (
+            <>
+              {movies
+                .slice(0, moviesCounter)
+                .map(({ id, nameRU, duration, image }) => (
+                  <MoviesCard
+                    key={id}
+                    variant="save"
+                    img={`https://api.nomoreparties.co/${image.url}`}
+                    duration={duration}
+                    name={nameRU}
+                  />
+                ))}
+            </>
+          )}
         </MoviesCardList>
       )}
 
-      {movies.length > 0 ? (
+      {movies && movies.length > 0 ? (
         <section className="more">
           <button
             className="more__button"
