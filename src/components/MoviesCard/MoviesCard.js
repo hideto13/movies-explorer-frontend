@@ -2,14 +2,16 @@ import okImg from "../../images/ok.svg";
 import deleteImg from "../../images/delete.svg";
 import "./MoviesCard.css";
 
-function MoviesCard({ variant, img, name, duration }) {
+function MoviesCard({ variant, img, name, duration, trailerLink }) {
   return (
     <li className="card">
       <div className="card__header">
         <p className="card__name">{name}</p>
         <p className="card__time">{duration} минут</p>
       </div>
-      <img className="card__img" src={img} alt="movie"></img>
+      <a href={trailerLink} target="_blank">
+        <img className="card__img" src={img} alt="movie"></img>
+      </a>
       <div className="card__footer">
         {variant === "success" && (
           <button className="card__button card__button_success">
