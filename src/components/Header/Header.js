@@ -3,7 +3,7 @@ import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo.svg";
 import "./Header.css";
 
-function Header() {
+function Header({ loggedIn }) {
   const location = useLocation();
   return (
     <header className="header">
@@ -14,7 +14,7 @@ function Header() {
         height="38"
         alt="Логотип"
       />
-      {location.pathname === "/" ? (
+      {location.pathname === "/" && !loggedIn ? (
         <div className="header__links">
           <Link className="header__link" to="/signup">
             Регистрация
