@@ -33,8 +33,13 @@ function App() {
       updateUser(jwt, email, name)
         .then(({ name, email }) => {
           setCurrentUser({ name, email });
+          setSuccess(true);
+          openInfoPopup();
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setSuccess(false);
+          openInfoPopup();
+        });
     }
   }
 
@@ -86,6 +91,12 @@ function App() {
         openInfoPopup();
       });
   }
+  function onLogout() {
+    localStorage.removeItem("jwt");
+    setLoggedIn(false);
+    navigate("/");
+  }
+
   React.useEffect(() => {
     handleUserCheck();
   }, []);
@@ -114,7 +125,11 @@ function App() {
           path="/profile"
           element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Profile currentUser={currentUser} onUpdateUser={onUpdateUser} />
+              <Profile
+                currentUser={currentUser}
+                onUpdateUser={onUpdateUser}
+                onLogout={onLogout}
+              />
             </ProtectedRoute>
           }
         />
