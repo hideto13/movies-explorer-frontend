@@ -17,7 +17,7 @@
   max-width: 1200px;
   min-height: 619px;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   margin: 0 auto;
   box-sizing: border-box;

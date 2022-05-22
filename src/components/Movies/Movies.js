@@ -95,10 +95,13 @@ function Movies() {
     handleResize();
     fetchSavedMovies();
 
-    const movies = JSON.parse(window.localStorage.getItem("movies") || []);
+    const movies =
+      (window.localStorage.getItem("movies") &&
+        JSON.parse(window.localStorage.getItem("movies"))) ||
+      [];
     setSearchValue(window.localStorage.getItem("searchValue") || "");
     const filter = window.localStorage.getItem("filterShort");
-    if (movies) {
+    if (movies.length > 0) {
       setIsSearching(true);
     }
     if (filter === "true") {
