@@ -1,4 +1,5 @@
 import { MAIN_URL } from "./constants";
+import validator from "validator";
 
 function _getResponseData(res) {
   if (!res.ok) {
@@ -77,6 +78,9 @@ export const addMovie = (
   thumbnail,
   movieId
 ) => {
+  country = country || "unknown";
+  nameEN = nameEN || "unknown";
+  trailerLink = validator.isURL(trailerLink) ? trailerLink : "ya.ru";
   return fetch(`${MAIN_URL}/movies`, {
     method: "POST",
     headers: {
