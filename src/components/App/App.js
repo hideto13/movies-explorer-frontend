@@ -31,8 +31,8 @@ function App() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       updateUser(jwt, email, name)
-        .then(({ name, email }) => {
-          setCurrentUser({ name, email });
+        .then(({ name, email, _id }) => {
+          setCurrentUser({ name, email, _id });
           setSuccess(true);
           openInfoPopup();
         })
@@ -47,8 +47,8 @@ function App() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       getUser(jwt)
-        .then(({ name, email }) => {
-          setCurrentUser({ name, email });
+        .then(({ name, email, _id }) => {
+          setCurrentUser({ name, email, _id });
           setLoggedIn(true);
         })
         .catch((err) => console.log(err));
