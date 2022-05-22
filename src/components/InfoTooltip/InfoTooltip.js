@@ -28,9 +28,7 @@ export default function InfoTooltip({ isOpen, onClose, success }) {
       <div className="popup__container">
         <button className="popup__close" type="button" onClick={onClose} />
         <p className="popup__title">
-          {success
-            ? "Вы успешно зарегистрировались!"
-            : "Что-то пошло не так! Попробуйте ещё раз."}
+          {success ? "Успешно!" : "Что-то пошло не так! Попробуйте ещё раз."}
         </p>
       </div>
     </section>

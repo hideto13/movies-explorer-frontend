@@ -51,3 +51,37 @@ export const updateUser = (token, email, name) => {
     body: JSON.stringify({ email, name }),
   }).then((res) => _getResponseData(res));
 };
+
+export const getMovies = (token) => {
+  return fetch(`${MAIN_URL}/movies`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => _getResponseData(res));
+};
+
+export const addMovie = (token, movie) => {
+  return fetch(`${MAIN_URL}/movies`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ nameRU: movie.nameRU }),
+  }).then((res) => _getResponseData(res));
+};
+
+export const deleteMovie = (token, id) => {
+  return fetch(`${MAIN_URL}/movies/${id}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => _getResponseData(res));
+};
