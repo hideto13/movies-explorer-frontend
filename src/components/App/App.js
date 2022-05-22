@@ -104,7 +104,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<Main />} />
+        <Route exact path="/" element={<Main loggedIn={loggedIn} />} />
         <Route
           path="/movies"
           element={
