@@ -6,6 +6,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 import { getMovies } from "../../utils/MoviesApi";
+import { getSavedMovies, addMovie } from "../../utils/MainApi";
 
 import "./Movies.css";
 
@@ -18,6 +19,7 @@ function Movies() {
   const moreMoviesCountDesktop = 3;
 
   const [movies, setMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
   const [moviesCounter, setMoviesCounter] = useState(0);
   const [moviesCounterStep, setMoviesCounterStep] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +38,6 @@ function Movies() {
         window.localStorage.setItem("movies", JSON.stringify(movies));
         window.localStorage.setItem("searchValue", searchValue);
         window.localStorage.setItem("filterShort", filterShort);
-        console.log(typeof filterShort);
         setMovies(movies);
         setIsLoading(false);
       })
@@ -60,6 +61,32 @@ function Movies() {
     }
   }
 
+  function fetchSavedMovies() {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      getSavedMovies(jwt)
+        .then((movies) => {
+          setSavedMovies(movies);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
+  function addMovie() {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      addMovie(jwt)
+        .then((movie) => {
+          console.log(movie);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 
@@ -70,6 +97,8 @@ function Movies() {
 
   useEffect(() => {
     handleResize();
+    fetchSavedMovies();
+
     const movies = JSON.parse(window.localStorage.getItem("movies") || []);
     setSearchValue(window.localStorage.getItem("searchValue") || "");
     const filter = window.localStorage.getItem("filterShort");
@@ -82,7 +111,6 @@ function Movies() {
     setMovies(movies);
   }, []);
 
-  useEffect(() => {}, []);
   return (
     <>
       <Header />
