@@ -141,7 +141,12 @@ function Movies() {
                     <MoviesCard
                       key={id}
                       movieId={id}
-                      variant="save"
+                      variant={
+                        savedMovies.filter((item) => item.movieId === id)
+                          .length > 0
+                          ? "success"
+                          : "save"
+                      }
                       image={`https://api.nomoreparties.co/${image.url}`}
                       duration={duration}
                       nameRU={nameRU}
@@ -152,6 +157,12 @@ function Movies() {
                       year={year}
                       description={description}
                       thumbnail={`https://api.nomoreparties.co/${image.formats.thumbnail.url}`}
+                      savedId={
+                        savedMovies.filter((item) => item.movieId === id)
+                          .length > 0 &&
+                        savedMovies.filter((item) => item.movieId === id)[0]._id
+                      }
+                      fetchSavedMovies={fetchSavedMovies}
                     />
                   )
                 )}

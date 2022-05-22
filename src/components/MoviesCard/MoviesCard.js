@@ -36,8 +36,8 @@ function MoviesCard({
         thumbnail,
         movieId
       )
-        .then((movie) => {
-          console.log(movie);
+        .then(() => {
+          fetchSavedMovies();
         })
         .catch((err) => {
           console.log(err);
@@ -68,7 +68,10 @@ function MoviesCard({
       </a>
       <div className="card__footer">
         {variant === "success" && (
-          <button className="card__button card__button_success">
+          <button
+            className="card__button card__button_success"
+            onClick={deleteSavedMovie}
+          >
             <img
               className="button__img button__img_success"
               src={okImg}
