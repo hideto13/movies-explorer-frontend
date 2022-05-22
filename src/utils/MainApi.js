@@ -100,9 +100,9 @@ export const addMovie = (
   }).then((res) => _getResponseData(res));
 };
 
-export const deleteMovie = (token, id) => {
-  return fetch(`${MAIN_URL}/movies/${id}`, {
-    method: "POST",
+export const deleteMovie = (token, savedId) => {
+  return fetch(`${MAIN_URL}/movies/${savedId}`, {
+    method: "DELETE",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

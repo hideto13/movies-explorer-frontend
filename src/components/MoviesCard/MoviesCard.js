@@ -1,6 +1,6 @@
 import okImg from "../../images/ok.svg";
 import deleteImg from "../../images/delete.svg";
-import { addMovie } from "../../utils/MainApi";
+import { addMovie, deleteMovie } from "../../utils/MainApi";
 import "./MoviesCard.css";
 
 function MoviesCard({
@@ -16,6 +16,8 @@ function MoviesCard({
   image,
   thumbnail,
   movieId,
+  savedId,
+  fetchSavedMovies,
 }) {
   function addSavedMovie() {
     const jwt = localStorage.getItem("jwt");
@@ -36,6 +38,19 @@ function MoviesCard({
       )
         .then((movie) => {
           console.log(movie);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
+  function deleteSavedMovie() {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      deleteMovie(jwt, savedId)
+        .then(() => {
+          fetchSavedMovies();
         })
         .catch((err) => {
           console.log(err);
@@ -72,7 +87,10 @@ function MoviesCard({
         )}
 
         {variant === "delete" && (
-          <button className="card__button card__button_delete">
+          <button
+            className="card__button card__button_delete"
+            onClick={deleteSavedMovie}
+          >
             <img
               className="button__img button__img_delete"
               src={deleteImg}
