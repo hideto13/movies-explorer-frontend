@@ -31,16 +31,20 @@ function SavedMovies() {
       <Header />
       <SearchForm />
       <MoviesCardList>
-        {movies.map(({ id, nameRU, duration, image, trailerLink }) => (
-          <MoviesCard
-            key={id}
-            variant="delete"
-            img={`https://api.nomoreparties.co/${image.url}`}
-            duration={duration}
-            name={nameRU}
-            trailerLink={trailerLink}
-          />
-        ))}
+        {movies.map(
+          ({ _id, movieId, nameRU, duration, image, trailerLink }) => (
+            <MoviesCard
+              key={movieId}
+              variant="delete"
+              image={image}
+              duration={duration}
+              nameRU={nameRU}
+              trailerLink={trailerLink}
+              savedId={_id}
+              fetchSavedMovies={fetchSavedMovies}
+            />
+          )
+        )}
       </MoviesCardList>
       <Footer />
     </>
