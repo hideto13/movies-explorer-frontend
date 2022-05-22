@@ -7,6 +7,10 @@ import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 import { getMovies } from "../../utils/MoviesApi";
 import { getSavedMovies } from "../../utils/MainApi";
+import {
+  filterMoviesByName,
+  filterShortMovies,
+} from "../../utils/FilterMovies";
 
 import "./Movies.css";
 
@@ -35,10 +39,15 @@ function Movies() {
       .then((movies) => {
         setIsSearchingFailed(false);
         setIsSearching(true);
-        window.localStorage.setItem("movies", JSON.stringify(movies));
+        let filtered = movies;
+        if (filterShort) {
+          filtered = filterShortMovies(filtered);
+        }
+        filtered = filterMoviesByName(filtered, searchValue);
+        window.localStorage.setItem("movies", JSON.stringify(filtered));
         window.localStorage.setItem("searchValue", searchValue);
         window.localStorage.setItem("filterShort", filterShort);
-        setMovies(movies);
+        setMovies(filtered);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -89,6 +98,9 @@ function Movies() {
     const movies = JSON.parse(window.localStorage.getItem("movies") || []);
     setSearchValue(window.localStorage.getItem("searchValue") || "");
     const filter = window.localStorage.getItem("filterShort");
+    if (movies) {
+      setIsSearching(true);
+    }
     if (filter === "true") {
       setFilterShort(true);
     } else {
