@@ -52,7 +52,7 @@ export const updateUser = (token, email, name) => {
   }).then((res) => _getResponseData(res));
 };
 
-export const getMovies = (token) => {
+export const getSavedMovies = (token) => {
   return fetch(`${MAIN_URL}/movies`, {
     method: "GET",
     headers: {
