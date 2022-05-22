@@ -6,7 +6,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 import { getMovies } from "../../utils/MoviesApi";
-import { getSavedMovies, addMovie } from "../../utils/MainApi";
+import { getSavedMovies } from "../../utils/MainApi";
 
 import "./Movies.css";
 
@@ -74,19 +74,6 @@ function Movies() {
     }
   }
 
-  function addMovie() {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      addMovie(jwt)
-        .then((movie) => {
-          console.log(movie);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }
-
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 
@@ -138,16 +125,36 @@ function Movies() {
             <>
               {movies
                 .slice(0, moviesCounter)
-                .map(({ id, nameRU, duration, image, trailerLink }) => (
-                  <MoviesCard
-                    key={id}
-                    variant="save"
-                    img={`https://api.nomoreparties.co/${image.url}`}
-                    duration={duration}
-                    name={nameRU}
-                    trailerLink={trailerLink}
-                  />
-                ))}
+                .map(
+                  ({
+                    id,
+                    nameRU,
+                    duration,
+                    image,
+                    trailerLink,
+                    nameEN,
+                    country,
+                    director,
+                    year,
+                    description,
+                  }) => (
+                    <MoviesCard
+                      key={id}
+                      movieId={id}
+                      variant="save"
+                      image={`https://api.nomoreparties.co/${image.url}`}
+                      duration={duration}
+                      nameRU={nameRU}
+                      trailerLink={trailerLink}
+                      nameEN={nameEN}
+                      country={country}
+                      director={director}
+                      year={year}
+                      description={description}
+                      thumbnail={`https://api.nomoreparties.co/${image.formats.thumbnail.url}`}
+                    />
+                  )
+                )}
             </>
           )}
         </MoviesCardList>

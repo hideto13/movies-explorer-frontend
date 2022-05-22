@@ -63,7 +63,20 @@ export const getSavedMovies = (token) => {
   }).then((res) => _getResponseData(res));
 };
 
-export const addMovie = (token, movie) => {
+export const addMovie = (
+  token,
+  nameRU,
+  nameEN,
+  country,
+  director,
+  duration,
+  year,
+  description,
+  image,
+  trailerLink,
+  thumbnail,
+  movieId
+) => {
   return fetch(`${MAIN_URL}/movies`, {
     method: "POST",
     headers: {
@@ -71,7 +84,19 @@ export const addMovie = (token, movie) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ nameRU: movie.nameRU }),
+    body: JSON.stringify({
+      nameRU,
+      nameEN,
+      country,
+      director,
+      duration,
+      year,
+      description,
+      image,
+      trailerLink,
+      thumbnail,
+      movieId,
+    }),
   }).then((res) => _getResponseData(res));
 };
 
