@@ -7,13 +7,15 @@ function Header({ loggedIn }) {
   const location = useLocation();
   return (
     <header className="header">
-      <img
-        className="header__logo"
-        src={logo}
-        width="38"
-        height="38"
-        alt="Логотип"
-      />
+      <Link className="header__logo" to="/">
+        <img
+          className="header__image"
+          src={logo}
+          width="38"
+          height="38"
+          alt="Логотип"
+        />
+      </Link>
       {location.pathname === "/" && !loggedIn ? (
         <div className="header__links">
           <Link className="header__link" to="/signup">
