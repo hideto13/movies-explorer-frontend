@@ -22,6 +22,7 @@ import {
 import "./Movies.css";
 
 function Movies() {
+  const [initialMovies, setInitialMovies] = useState([]);
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [moviesCounter, setMoviesCounter] = useState(0);
@@ -34,20 +35,25 @@ function Movies() {
   const [filterShort, setFilterShort] = useState(false);
 
   function handleSearchMovie({ searchValue, filterShort }) {
+    setIsSearching(true);
+    let filtered = initialMovies;
+    if (filterShort) {
+      filtered = filterShortMovies(filtered);
+    }
+    filtered = filterMoviesByName(filtered, searchValue);
+    window.localStorage.setItem("movies", JSON.stringify(filtered));
+    window.localStorage.setItem("searchValue", searchValue);
+    window.localStorage.setItem("filterShort", filterShort);
+    setMovies(filtered);
+  }
+
+  function fetchInitialMovies() {
     setIsLoading(true);
     getMovies()
       .then((movies) => {
         setIsSearchingFailed(false);
-        setIsSearching(true);
-        let filtered = movies;
-        if (filterShort) {
-          filtered = filterShortMovies(filtered);
-        }
-        filtered = filterMoviesByName(filtered, searchValue);
-        window.localStorage.setItem("movies", JSON.stringify(filtered));
-        window.localStorage.setItem("searchValue", searchValue);
-        window.localStorage.setItem("filterShort", filterShort);
-        setMovies(filtered);
+
+        setInitialMovies(movies);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -93,6 +99,7 @@ function Movies() {
 
   useEffect(() => {
     handleResize();
+    fetchInitialMovies();
     fetchSavedMovies();
 
     const movies =
