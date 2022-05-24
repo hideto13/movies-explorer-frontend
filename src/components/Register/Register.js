@@ -1,7 +1,7 @@
 import React from "react";
 import validator from "validator";
 import { Link } from "react-router-dom";
-
+import { NAME_PATTERN } from "../../utils/constants";
 import logo from "../../images/logo.svg";
 import "./Register.css";
 
@@ -17,13 +17,17 @@ function Register({ onRegister }) {
   const [isPasswordValid, setIsPasswordValid] = React.useState(false);
 
   function handleNameChange(e) {
-    const pattern = /^[A-Za-zА-Яа-яЁё\- ]+$/;
     setName(e.target.value);
     setNameError(e.target.validationMessage);
-    if (e.target.validationMessage === "" && !e.target.value.match(pattern)) {
+    if (
+      e.target.validationMessage === "" &&
+      !e.target.value.match(NAME_PATTERN)
+    ) {
       setNameError("Недопустимое имя");
     }
-    setIsNameValid(e.target.validity.valid && e.target.value.match(pattern));
+    setIsNameValid(
+      e.target.validity.valid && e.target.value.match(NAME_PATTERN)
+    );
   }
 
   function handleEmailChange(e) {
