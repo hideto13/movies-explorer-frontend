@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { register, login, getUser, updateUser } from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
@@ -14,6 +14,7 @@ import "./App.css";
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [infoPopupOpen, setInfoPopupOpen] = React.useState(false);
@@ -100,6 +101,16 @@ function App() {
   React.useEffect(() => {
     handleUserCheck();
   }, []);
+
+  React.useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if (
+      jwt &&
+      (location.pathname === "/signup" || location.pathname === "/signin")
+    ) {
+      navigate("/");
+    }
+  }, [location]);
 
   return (
     <div className="App">

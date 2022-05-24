@@ -30,9 +30,13 @@
   background: #3ddc84;
 }
 
-.header__logo {
+.header__image {
   width: 38px;
   height: 38px;
+}
+
+.header__logo {
+  line-height: 0;
 }
 
 @media (max-width: 767px) {
