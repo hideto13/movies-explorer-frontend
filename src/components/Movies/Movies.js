@@ -11,17 +11,17 @@ import {
   filterMoviesByName,
   filterShortMovies,
 } from "../../utils/FilterMovies";
+import {
+  INITIAL_NUMBER_OF_MOVIES_DESKTOP,
+  INITIAL_NUMBER_OF_MOVIES_MOBILE,
+  INITIAL_NUMBER_OF_MOVIES_TABLET,
+  NUMBER_OF_MORE_MOVIES_DESKTOP,
+  NUMBER_OF_MORE_MOVIES_MOBILE,
+} from "../../utils/constants";
 
 import "./Movies.css";
 
 function Movies() {
-  const initialMoviesCountMobile = 5;
-  const initialMoviesCountTablet = 8;
-  const initialMoviesCountDesktop = 12;
-
-  const moreMoviesCountMobile = 2;
-  const moreMoviesCountDesktop = 3;
-
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [moviesCounter, setMoviesCounter] = useState(0);
@@ -30,7 +30,7 @@ function Movies() {
   const [isSearching, setIsSearching] = useState(false);
   const [isSearchingFailed, setIsSearchingFailed] = useState(false);
 
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [filterShort, setFilterShort] = useState(false);
 
   function handleSearchMovie({ searchValue, filterShort }) {
@@ -59,14 +59,14 @@ function Movies() {
 
   function handleResize() {
     if (window.screen.width >= 1023) {
-      setMoviesCounter(initialMoviesCountDesktop);
-      setMoviesCounterStep(moreMoviesCountDesktop);
+      setMoviesCounter(INITIAL_NUMBER_OF_MOVIES_DESKTOP);
+      setMoviesCounterStep(NUMBER_OF_MORE_MOVIES_DESKTOP);
     } else if (window.screen.width >= 767) {
-      setMoviesCounter(initialMoviesCountTablet);
-      setMoviesCounterStep(moreMoviesCountMobile);
+      setMoviesCounter(INITIAL_NUMBER_OF_MOVIES_TABLET);
+      setMoviesCounterStep(NUMBER_OF_MORE_MOVIES_MOBILE);
     } else {
-      setMoviesCounter(initialMoviesCountMobile);
-      setMoviesCounterStep(moreMoviesCountMobile);
+      setMoviesCounter(INITIAL_NUMBER_OF_MOVIES_MOBILE);
+      setMoviesCounterStep(NUMBER_OF_MORE_MOVIES_MOBILE);
     }
   }
 

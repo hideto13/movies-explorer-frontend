@@ -1,6 +1,8 @@
 import React from "react";
 import validator from "validator";
 import Header from "../Header/Header";
+import { NAME_PATTERN } from "../../utils/constants";
+
 import "./Profile.css";
 
 function Profile({ currentUser, onUpdateUser, onLogout }) {
@@ -12,13 +14,17 @@ function Profile({ currentUser, onUpdateUser, onLogout }) {
   const [isEmailValid, setIsEmailValid] = React.useState(true);
 
   function handleNameChange(e) {
-    const pattern = /^[A-Za-zА-Яа-яЁё\- ]+$/;
     setName(e.target.value);
     setNameError(e.target.validationMessage);
-    if (e.target.validationMessage === "" && !e.target.value.match(pattern)) {
+    if (
+      e.target.validationMessage === "" &&
+      !e.target.value.match(NAME_PATTERN)
+    ) {
       setNameError("Недопустимое имя");
     }
-    setIsNameValid(e.target.validity.valid && e.target.value.match(pattern));
+    setIsNameValid(
+      e.target.validity.valid && e.target.value.match(NAME_PATTERN)
+    );
   }
 
   function handleEmailChange(e) {

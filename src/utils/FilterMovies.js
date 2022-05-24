@@ -1,5 +1,7 @@
+import { SHORT_MOVIE_DURATION } from "./constants";
+
 export function isShortMovie(duration) {
-  if (duration > 40) {
+  if (duration > SHORT_MOVIE_DURATION) {
     return false;
   }
   return true;
