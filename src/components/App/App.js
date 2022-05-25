@@ -94,7 +94,11 @@ function App() {
   }
   function onLogout() {
     localStorage.removeItem("jwt");
+    localStorage.removeItem("searchValue");
+    localStorage.removeItem("filterShort");
+    localStorage.removeItem("movies");
     setLoggedIn(false);
+    setCurrentUser({});
     navigate("/");
   }
 

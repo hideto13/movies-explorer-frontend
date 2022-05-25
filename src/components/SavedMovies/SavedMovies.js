@@ -38,7 +38,7 @@ function SavedMovies({ currentUser }) {
         });
     }
   }
-  console.log(movies);
+
   useEffect(() => {
     fetchSavedMovies();
   }, []);
