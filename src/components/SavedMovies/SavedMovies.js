@@ -13,12 +13,13 @@ import {
 import "./SavedMovies.css";
 
 function SavedMovies({ currentUser }) {
+  const [initialMovies, setInitialMovies] = useState([]);
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = React.useState("");
   const [filterShort, setFilterShort] = useState(false);
 
   function handleSearchMovie({ searchValue, filterShort }) {
-    let filtered = movies;
+    let filtered = initialMovies;
     if (filterShort) {
       filtered = filterShortMovies(filtered);
     }
@@ -31,6 +32,7 @@ function SavedMovies({ currentUser }) {
     if (jwt) {
       getSavedMovies(jwt)
         .then((movies) => {
+          setInitialMovies(filterUserMovies(movies, currentUser));
           setMovies(filterUserMovies(movies, currentUser));
         })
         .catch((err) => {
@@ -41,7 +43,7 @@ function SavedMovies({ currentUser }) {
 
   useEffect(() => {
     fetchSavedMovies();
-  }, []);
+  }, [currentUser]);
   return (
     <>
       <Header />
