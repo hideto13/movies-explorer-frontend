@@ -10,6 +10,7 @@ import { getSavedMovies } from "../../utils/MainApi";
 import {
   filterMoviesByName,
   filterShortMovies,
+  filterUserMovies,
 } from "../../utils/FilterMovies";
 import {
   INITIAL_NUMBER_OF_MOVIES_DESKTOP,
@@ -21,7 +22,7 @@ import {
 
 import "./Movies.css";
 
-function Movies() {
+function Movies({ currentUser }) {
   const [initialMovies, setInitialMovies] = useState([]);
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
@@ -81,7 +82,7 @@ function Movies() {
     if (jwt) {
       getSavedMovies(jwt)
         .then((movies) => {
-          setSavedMovies(movies);
+          setSavedMovies(filterUserMovies(movies, currentUser));
         })
         .catch((err) => {
           console.log(err);

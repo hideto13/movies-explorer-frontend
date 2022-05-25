@@ -21,3 +21,7 @@ export function filterMoviesByName(movies, name) {
 export function filterShortMovies(movies) {
   return movies.filter((movie) => isShortMovie(movie.duration));
 }
+
+export function filterUserMovies(movies, user) {
+  return movies.filter((movie) => movie.owner === user._id);
+}
