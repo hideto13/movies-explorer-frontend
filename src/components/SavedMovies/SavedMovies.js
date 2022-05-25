@@ -8,10 +8,11 @@ import { getSavedMovies } from "../../utils/MainApi";
 import {
   filterMoviesByName,
   filterShortMovies,
+  filterUserMovies,
 } from "../../utils/FilterMovies";
 import "./SavedMovies.css";
 
-function SavedMovies() {
+function SavedMovies({ currentUser }) {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = React.useState("");
   const [filterShort, setFilterShort] = useState(false);
@@ -30,14 +31,14 @@ function SavedMovies() {
     if (jwt) {
       getSavedMovies(jwt)
         .then((movies) => {
-          setMovies(movies);
+          setMovies(filterUserMovies(movies, currentUser));
         })
         .catch((err) => {
           console.log(err);
         });
     }
   }
-
+  console.log(movies);
   useEffect(() => {
     fetchSavedMovies();
   }, []);
